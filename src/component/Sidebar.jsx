@@ -27,17 +27,17 @@ const Sidebar = () => {
             <button className="py-3 text-start px-4 hover:bg-[#303030]">
               <Link to="/">Home</Link>
             </button>
-            <button className="py-3 text-start px-4 hover:bg-[#303030] flex justify-between items-center">
+            <button className="py-3 text-start px-4 hover:bg-[#303030] ">
               <Link to="/about">About</Link>
             </button>
-            <button className="py-3 text-start px-4 hover:bg-[#303030] flex justify-between items-center">
-            <Link to="/blog">Blog</Link>
+            <button className="py-3 text-start px-4 hover:bg-[#303030] ">
+              <Link to="/blog">Blog</Link>
             </button>
-            <button className="py-3 text-start px-4 hover:bg-[#303030] flex justify-between items-center">
-              Collection
+            <button className="py-3 text-start px-4 hover:bg-[#303030] ">
+              <Link to="/blog">collection</Link>
             </button>
             <button className="py-3 text-start px-4 hover:bg-[#303030] justify-between items-center hidden dsm:!flex">
-              Connect Wallet
+              <Link to="/blog">Contact</Link>
             </button>
           </div>
         </div>

@@ -24,6 +24,7 @@ const Header = () => {
   };
 
   return (
+    <>
     <div className="container mx-auto px-5 xl:px-4 2xl:px-4 sm:px-3 flex justify-between items-center py-8"
       data-aos="fade-down"
        data-aos-offset="300"
@@ -66,8 +67,9 @@ const Header = () => {
           <HiMenu />
         </div>
       </div>
-      {sidebarisOpen && <Sidebar />}
     </div>
+    {sidebarisOpen && <Sidebar />}
+    </>
   );
 };
 
