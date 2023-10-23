@@ -2,6 +2,7 @@ import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { toggleSidebar } from "../redux/reducer/togglesidebar";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -24,13 +25,13 @@ const Sidebar = () => {
           </div>
           <div className="flex flex-col justify-start text-start text-lg">
             <button className="py-3 text-start px-4 hover:bg-[#303030]">
-              Mint
+              <Link to="/">Home</Link>
             </button>
             <button className="py-3 text-start px-4 hover:bg-[#303030] flex justify-between items-center">
-              Transfer
+              <Link to="/about">About</Link>
             </button>
             <button className="py-3 text-start px-4 hover:bg-[#303030] flex justify-between items-center">
-              Update
+            <Link to="/blog">Blog</Link>
             </button>
             <button className="py-3 text-start px-4 hover:bg-[#303030] flex justify-between items-center">
               Collection
