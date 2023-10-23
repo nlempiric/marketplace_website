@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root
+{
+  font-size: 18px;
+  font-family: "interRegular";
+
+}
+p
+{
+  font-size: 18px;
+  font-family: "interRegular";
+  line-height:32px;
+  
+}
+
+h1
+{
+  font-family:"Interh1" ;
+  /* line-height:80px; */
+  color: #050515;
+} 
+h2
+{
+  font-family:"Interh2" ;
+  /* line-height: 60px; */
+}
+h3{
+  font-family:"interh3" ;
+  /* line-height: 48px; */
+}
+@font-face {
+  font-family: "interRegular";
+  src: url("../public/fonts/Inter-Regular.ttf") format("truetype");
+  /* font-weight: 300; */
+}
+@font-face {
+  font-family: "Interh1";
+  src: url("../public/fonts/Inter-Bold.ttf") format("truetype");
+  /* font-weight: 300; */
+}
+@font-face {
+  font-family: "interh2";
+  src: url("../public/fonts/Inter-SemiBold.ttf") format("truetype");
+  /* font-weight: 300; */
+}
+@font-face {
+  font-family: "interh3";
+  src: url("../public/fonts/Inter-Medium.ttf") format("truetype");
+  /* font-weight: 300; */
+}
+
