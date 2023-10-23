@@ -51,7 +51,7 @@ const Header = () => {
               <Link to="/contact">Transfer</Link>
             </li>
             <li>
-              <Link to="/contact">collection</Link>
+              <Link to="/contact">Collection</Link>
             </li>
           </ul>
         </div>

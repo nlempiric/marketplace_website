@@ -34,11 +34,15 @@ const Sidebar = () => {
               <Link to="/blog">Blog</Link>
             </button>
             <button className="py-3 text-start px-4 hover:bg-[#303030] ">
-              <Link to="/blog">collection</Link>
+              <Link to="/blog">Collection</Link>
             </button>
             <button className="py-3 text-start px-4 hover:bg-[#303030] justify-between items-center hidden dsm:!flex">
-              <Link to="/blog">Contact</Link>
+              <Link to="/blog">Connect Wallet</Link>
             </button>
+            {/* <button className="py-3 text-start px-4 hover:bg-[#303030] justify-between items-center hidden dsm:!flex">
+              <Link to="/blog">Connect Wallet</Link>
+            </button> */}
+
           </div>
         </div>
       </div>

@@ -57,7 +57,7 @@ const ListsinFooter = () => {
           <input
             type="email"
             placeholder="Your Email"
-            className="w-[65%] py-3 lg:w-full focus:outline-gray-300"
+            className="w-[65%] py-3 lg:w-full placeholder:px-3"
           />
           <button className="w-1/3 lg:w-full py-3 px-5 2xl:px-8 border border-1 border-gray-300 rounded-md text-[#050515] hover:bg-[#050515] hover:text-white">
             Send
