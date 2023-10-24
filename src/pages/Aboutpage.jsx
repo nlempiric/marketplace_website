@@ -14,6 +14,7 @@ const Aboutpage = () => {
       once: true,
     });
   }, []);
+
   return (
     <>
       <div
@@ -22,8 +23,9 @@ const Aboutpage = () => {
         data-aos-offset="300"
         data-aos-easing="ease-in-sine"
         data-aos-duration="1000"
+        style={{ zIndex: "-20" }}
       >
-        <Heading headingName="About Me"/>
+        <Heading headingName="About Me" />
       </div>
 
       <div>
@@ -42,14 +44,17 @@ const Aboutpage = () => {
         data-aos="fade-up"
         data-aos-offset="300"
         data-aos-easing="ease-in-sine"
-        data-aos-duration="1000">
+        data-aos-duration="1000"
+      >
         <AboutCount />
       </div>
-      <div className="bg-gradient-to-r from-[#d6ebdc] to-[#f6d8c8] via-[#dfe8dd] via-[#e6e8dc] via-[#eae8dd] via-[#f0dece] md:bg-gradient-to-b dsm:bg-gradient-to-b"
-      data-aos="fade-up"
-      data-aos-offset="300"
-      data-aos-easing="ease-in-sine"
-      data-aos-duration="1000">
+      <div
+        className="bg-gradient-to-r from-[#d6ebdc] to-[#f6d8c8] via-[#dfe8dd] via-[#e6e8dc] via-[#eae8dd] via-[#f0dece] md:bg-gradient-to-b dsm:bg-gradient-to-b"
+        data-aos="fade-up"
+        data-aos-offset="300"
+        data-aos-easing="ease-in-sine"
+        data-aos-duration="1000"
+      >
         <AboutExplore />
       </div>
       <div>

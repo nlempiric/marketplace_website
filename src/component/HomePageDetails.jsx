@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { scroller } from "react-scroll";
+
 
 const HomePageDetails = () => {
   useEffect(() => {
@@ -8,6 +10,13 @@ const HomePageDetails = () => {
       once: true,
     });
   }, []);
+
+  const scrollTo = (target) => {
+    scroller.scrollTo(target, {
+      duration: 1000, 
+      smooth: "easeInOutQuart",
+    });
+  };
 
   return (
     <div
@@ -29,7 +38,13 @@ const HomePageDetails = () => {
         </p>
       </div>
       <div className="text-lg py-4">
-        <button className="px-10 py-3 border border-1 border-gray-400 rounded-md text-[#050515] hover:bg-[#050515] hover:text-white">
+        <button
+          className="px-10 py-3 border border-1 border-gray-400 rounded-md text-[#050515] hover:bg-[#050515] hover:text-white"
+          onClick={(e) => {
+            e.preventDefault();
+            scrollTo("collection");
+          }}
+        >
           <h3>Explore Now</h3>
         </button>
       </div>

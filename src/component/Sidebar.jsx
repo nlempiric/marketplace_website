@@ -3,9 +3,19 @@ import { AiOutlineClose } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { toggleSidebar } from "../redux/reducer/togglesidebar";
 import { Link } from "react-router-dom";
+import { scroller } from "react-scroll";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const scrollTo = (target) => {
+    scroller.scrollTo(target, {
+      duration: 1500,
+      smooth: "easeInOutQuart",
+    });
+  };
 
   const handleCloseSidebar = () => {
     dispatch(toggleSidebar(false));
@@ -24,26 +34,55 @@ const Sidebar = () => {
             </span>
           </div>
           <div className="flex flex-col justify-start text-start text-lg">
-            <button className="py-3 text-start px-4 hover:bg-[#303030]">
+            <button
+              className="py-3 text-start px-4 hover:bg-[#303030]"
+              onClick={handleCloseSidebar}
+            >
               <Link to="/">Home</Link>
             </button>
-            <button className="py-3 text-start px-4 hover:bg-[#303030] ">
+            <button
+              className="py-3 text-start px-4 hover:bg-[#303030] "
+              onClick={handleCloseSidebar}
+            >
               <Link to="/about">About</Link>
             </button>
-            <button className="py-3 text-start px-4 hover:bg-[#303030] ">
+            <button
+              className="py-3 text-start px-4 hover:bg-[#303030] "
+              onClick={handleCloseSidebar}
+            >
               <Link to="/blog">Blog</Link>
             </button>
-            <button className="py-3 text-start px-4 hover:bg-[#303030] ">
-              <Link to="/blog">Collection</Link>
+            <button
+              className="py-3 text-start px-4 hover:bg-[#303030] "
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/");
+                setTimeout(() => {
+                  scrollTo("collection");
+                }, 500);
+                handleCloseSidebar();
+              }}
+            >
+              <Link>Collection</Link>
+            </button>
+            <button
+              className="py-3 text-start px-4 hover:bg-[#303030] "
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/");
+                setTimeout(() => {
+                  scrollTo("contact");
+                }, 500);
+                handleCloseSidebar();
+              }}
+            >
+              <Link>Contact</Link>
             </button>
             <button className="py-3 text-start px-4 hover:bg-[#303030] justify-between items-center hidden dsm:!flex">
               <Link to="/blog">Connect Wallet</Link>
             </button>
-            {/* <button className="py-3 text-start px-4 hover:bg-[#303030] justify-between items-center hidden dsm:!flex">
-              <Link to="/blog">Connect Wallet</Link>
-            </button> */}
-
           </div>
+          
         </div>
       </div>
     </div>

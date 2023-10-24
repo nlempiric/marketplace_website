@@ -4,11 +4,15 @@ import Footer from './component/Footer';
 
 function Layout({ children }) {
   return (
+    <>
+    <Header />
     <div className="">
-      <Header />
+      
       {children}
       <Footer />
     </div>
+    </>
+    
   );
 }
 

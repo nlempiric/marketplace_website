@@ -7,8 +7,19 @@ import { useDispatch } from "react-redux";
 import { toggleSidebar } from "../redux/reducer/togglesidebar";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { scroller } from "react-scroll";
+import Dropdown from "./Dropdown";
+
 
 const Header = () => {
+
+  const scrollTo = (target) => {
+    scroller.scrollTo(target, {
+      duration: 1500, 
+      smooth: "easeInOutQuart",
+    });
+  };
+
 
   useEffect(() => {
     AOS.init({
@@ -47,11 +58,16 @@ const Header = () => {
             <li>
               <Link to="/blog">Blog</Link>
             </li>
-            <li>
-              <Link to="/contact">Transfer</Link>
+            <li onClick={(e) => {e.preventDefault();scrollTo("collection");}}>
+              <Link>
+                Collection
+              </Link>
             </li>
             <li>
-              <Link to="/contact">Collection</Link>
+             <Dropdown/>
+            </li>
+            <li onClick={(e) => {e.preventDefault();scrollTo("contact");}}>
+               <Link>Contact</Link>
             </li>
           </ul>
         </div>
