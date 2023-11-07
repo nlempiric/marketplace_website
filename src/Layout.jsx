@@ -5,11 +5,14 @@ import Footer from './component/Footer';
 function Layout({ children }) {
   return (
     <>
+    <div className='flex flex-col justify-between h-full'>
     <Header />
     <div className="">
       
       {children}
-      <Footer />
+      
+    </div>
+    <Footer />
     </div>
     </>
     

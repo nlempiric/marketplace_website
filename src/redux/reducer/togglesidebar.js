@@ -7,7 +7,7 @@ const toggleSlice = createSlice({
   },
   reducers: {
     toggleSidebar: (state, action) => {
-      console.log("erf5tewer",action.payload);
+      console.log("erf5tewer", action.payload);
       state.isOpen = action.payload;
     },
   },

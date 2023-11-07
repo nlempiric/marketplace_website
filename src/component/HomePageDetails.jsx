@@ -3,7 +3,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { scroller } from "react-scroll";
 
-
 const HomePageDetails = () => {
   useEffect(() => {
     AOS.init({
@@ -13,19 +12,13 @@ const HomePageDetails = () => {
 
   const scrollTo = (target) => {
     scroller.scrollTo(target, {
-      duration: 1000, 
+      duration: 1000,
       smooth: "easeInOutQuart",
     });
   };
 
   return (
-    <div
-      className="container mx-auto px-5 xl:px-4 2xl:px-4 sm:px-3 flex flex-col justify-center items-center py-10 2xl:py-10"
-      data-aos="fade-up"
-      data-aos-offset="400"
-      data-aos-easing="ease-in-sine"
-      data-aos-duration="1000"
-    >
+    <div className="container mx-auto px-5 xl:px-4 2xl:px-4 sm:px-3 flex flex-col justify-center items-center py-10 2xl:py-10">
       <div className="px-24 text-center dsm:px-0 md:px-0 xl:px-6 lg:px-5">
         <h1 className="text-[35px] 2xl:text-[65px] xl:text-[60px] lg:text-[58px] md:text-[55px] sm:text-[30px] ">
           Discover Rare Digital Art and Collect NFT

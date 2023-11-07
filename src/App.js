@@ -1,24 +1,16 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from './Layout';
-import Homepage from './pages/Homepage';
-import './App.css'
-import Aboutpage from './pages/Aboutpage';
-import BlogPage from './pages/BlogPage';
-import BlogDetailPage from './pages/BlogDetailPage';
+import React from "react";
+import Layout from "./Layout";
+
+import "./App.css";
+import AllRoutes from "./Routes/AllRoutes";
 
 function App() {
   return (
-    <BrowserRouter>
+    <>
       <Layout>
-        <Routes>
-        <Route path="/" element={<Homepage/>}/>
-        <Route path="/about" element={<Aboutpage/>}/>
-        <Route path="/blog" element={<BlogPage/>}/>
-        <Route path={`/blog/:id`} element={<BlogDetailPage/>}/>
-        </Routes>
+        <AllRoutes />
       </Layout>
-    </BrowserRouter>
+    </>
   );
 }
 

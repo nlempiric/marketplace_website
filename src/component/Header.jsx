@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { HiMenu } from "react-icons/hi";
 import Sidebar from "./Sidebar";
 import { useSelector } from "react-redux";
@@ -12,6 +12,8 @@ import Dropdown from "./Dropdown";
 
 
 const Header = () => {
+  const navigate = useNavigate();
+
 
   const scrollTo = (target) => {
     scroller.scrollTo(target, {
@@ -28,7 +30,7 @@ const Header = () => {
   }, []);
 
   const dispatch = useDispatch();
-  const sidebarisOpen = useSelector((state) => state.sidebar.isOpen);
+  const sidebarisOpen = useSelector((state) => state.root.sidebar.isOpen);
   console.log(sidebarisOpen, "+++++++++++++++++++++++");
   const handleOpenSidebar = () => {
     dispatch(toggleSidebar(true));
@@ -48,7 +50,7 @@ const Header = () => {
       </div>
       <div className="flex items-center gap-8 lg:gap-5">
         <div>
-          <ul className="hidden 2xl:!flex lg:!flex xl:!flex md:hidden sm:hidden text-[#505072] text-lg gap-10 lg:gap-5">
+          <ul className="hidden 2xl:!flex lg:hidden xl:hidden md:hidden sm:hidden text-[#505072] text-lg gap-10 lg:gap-5 items-center">
             <li className="">
               <Link to="/">Home</Link>
             </li>
@@ -58,7 +60,16 @@ const Header = () => {
             <li>
               <Link to="/blog">Blog</Link>
             </li>
-            <li onClick={(e) => {e.preventDefault();scrollTo("collection");}}>
+            
+            <li
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/");
+                setTimeout(() => {
+                  scrollTo("collection");
+                }, 500);
+              }}
+            >
               <Link>
                 Collection
               </Link>
@@ -66,18 +77,28 @@ const Header = () => {
             <li>
              <Dropdown/>
             </li>
-            <li onClick={(e) => {e.preventDefault();scrollTo("contact");}}>
-               <Link>Contact</Link>
+            <li 
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/");
+                setTimeout(() => {
+                  scrollTo("contact");
+                }, 500);
+              }}
+            >
+                <Link>
+                Contact
+                </Link>
             </li>
           </ul>
         </div>
         <div className="text-lg sm:hidden dsm:hidden">
-          <button className="px-10 py-3 border border-1 border-gray-400 rounded-md text-[#050515] hover:bg-[#050515] hover:text-white">
+          <button className="px-5 py-3 border border-1 border-gray-400 rounded-md text-[#050515] hover:bg-[#050515] hover:text-white">
             Connect Wallet
           </button>
         </div>
         <div
-          className="hidden md:!flex dsm:!flex text-3xl"
+          className="hidden xl:!flex lg:!flex md:!flex dsm:!flex text-3xl"
           onClick={handleOpenSidebar}
         >
           <HiMenu />

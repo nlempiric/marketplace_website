@@ -7,6 +7,7 @@ import AboutDetail from "../component/AboutDetail";
 import AboutMyService from "../component/AboutMyService";
 import AboutCount from "../component/AboutCount";
 import AboutExplore from "../component/AboutExplore";
+import { motion } from "framer-motion";
 
 const Aboutpage = () => {
   useEffect(() => {
@@ -17,7 +18,7 @@ const Aboutpage = () => {
 
   return (
     <>
-      <div
+      {/* <div
         className="bg-gradient-to-r from-[#d6ebdc] to-[#f6d8c8] via-[#dfe8dd] via-[#e6e8dc] via-[#eae8dd] via-[#f0dece] md:bg-gradient-to-b dsm:bg-gradient-to-b"
         data-aos="fade-up"
         data-aos-offset="300"
@@ -26,10 +27,32 @@ const Aboutpage = () => {
         style={{ zIndex: "-20" }}
       >
         <Heading headingName="About Me" />
+      </div> */}
+      <div 
+             className="bg-gradient-to-r from-[#d6ebdc] to-[#f6d8c8] via-[#dfe8dd] via-[#e6e8dc] via-[#eae8dd] via-[#f0dece] md:bg-gradient-to-b dsm:bg-gradient-to-b"
+             >
+
+      <motion.div
+        initial={{ opacity: 0, y: 90 }} // Initial state
+        animate={{ opacity: 1, y: 0 }}   // Animate to this state
+        exit={{ opacity: 0, y: 20 }}     // Exit state (if needed)
+        transition={{ duration: 0.9 }}  // Transition settings
+        className="box"                  // Add your class or styles here
+      >
+        <Heading headingName="About Me" />
+      </motion.div>
       </div>
 
       <div>
-        <AboutDetail />
+        <motion.div
+          initial={{ opacity: 0, y: 90 }}
+          animate={{ opacity: 1, y: 0 }} // Animate to this state
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.9 }}
+          className="box"
+        >
+          <AboutDetail />
+        </motion.div>
       </div>
       <div
         className="bg-gradient-to-r from-[#d6ebdc] to-[#f6d8c8] via-[#dfe8dd] via-[#e6e8dc] via-[#eae8dd] via-[#f0dece] md:bg-gradient-to-b dsm:bg-gradient-to-b"

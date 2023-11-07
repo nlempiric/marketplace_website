@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { toggleSidebar } from "../redux/reducer/togglesidebar";
 import { Link } from "react-router-dom";
 import { scroller } from "react-scroll";
 import { useNavigate } from "react-router-dom";
+import { PiCaretDownBold } from "react-icons/pi";
+
 
 const Sidebar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [toggledropdown, settoggledropdown] = useState(false);
 
   const scrollTo = (target) => {
     scroller.scrollTo(target, {
@@ -21,9 +24,14 @@ const Sidebar = () => {
     dispatch(toggleSidebar(false));
   };
 
+  const handleDropdown=()=>
+  {
+    settoggledropdown(!toggledropdown)
+  }
+
   return (
     <div
-      className={`2xl:hidden xl:hidden lg:hidden fixed top-0 right-0 w-[15rem] bg-black z-50 overflow-hidden p-0 text-white h-[100vh]`}
+      className={`2xl:hidden  fixed top-0 right-0 w-[15rem] bg-black z-50 overflow-hidden p-0 text-white h-[100vh]`}
       style={{ position: "fixed" }}
     >
       <div>
@@ -65,6 +73,22 @@ const Sidebar = () => {
             >
               <Link>Collection</Link>
             </button>
+            <button className="flex justify-between items-center py-3 text-start px-4 hover:bg-[#303030] " onClick={handleDropdown}>
+              Explore <PiCaretDownBold/>
+            </button>
+            {toggledropdown &&(
+              <>
+              <button className="py-3 text-gray-400 text-start px-8 hover:bg-[#303030] ">
+                <Link to="/MintNftPage">Mint Nft</Link>
+              </button>
+              {/* <button className="py-3 text-gray-400 text-start px-8 hover:bg-[#303030] ">
+              <Link to="/TransferNft">Transfer Nft</Link>
+              </button> */}
+              <button className="py-3 text-gray-400 text-start px-8 hover:bg-[#303030] ">
+              <Link to="/MyCollection">My Collection</Link>
+              </button>
+              </>
+            )}
             <button
               className="py-3 text-start px-4 hover:bg-[#303030] "
               onClick={(e) => {
