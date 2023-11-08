@@ -40,7 +40,7 @@ const UpdateNft = () => {
         transition={{ duration: 0.9 }}
         className="box"
       >
-        <div className="container mx-auto px-5 xl:px-4 2xl:px-4 sm:px-3 flex  justify-between gap-10 2xl:!flex-row xl:!flex-row lg:!flex-row py-16 sm:py-10 flex-col-reverse">
+        <div className="container mx-auto px-5 xl:px-4 2xl:px-4 sm:px-3 flex  justify-between gap-10 2xl:!flex-row xl:!flex-row lg:!flex-row py-16 sm:py-10 flex-col">
           <div className="2xl:w-1/2 xl:w-1/2  2xl:h-[500px] xl:h-[500px] lg:h-[500px] h-[400px] sm:h-[300px]  rounded-lg lg:w-1/2 flex justify-center items-center border border-1 border-gray-700">
             {Data._imgUrl ? (
               <img

@@ -35,7 +35,7 @@ const Sidebar = () => {
           initial={{ x: 500}}
           animate={{ x: 0 }}
           exit={{ x: -500 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
           className="fixed top-0 right-0 w-full bg-opacity-90 bg-black z-50 overflow-hidden p-0 text-white h-[100vh]"
         >
         
