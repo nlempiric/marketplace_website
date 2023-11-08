@@ -16,7 +16,7 @@ const Dropdown = () => {
   
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <Menu.Button className="flex items-center w-full justify-center rounded-md text-[#505072] text-lg gap-1">
+        <Menu.Button className="flex items-center w-full justify-center rounded-md text-[#505072] text-lg gap-1 hover:text-[#050515]">
           Explore
           <PiCaretDownBold/>
         </Menu.Button>

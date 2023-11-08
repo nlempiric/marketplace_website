@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { FaEthereum } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { motion } from "framer-motion";
+
 
 const HomeCardsComp = () => {
   useEffect(() => {
@@ -30,8 +32,18 @@ const HomeCardsComp = () => {
 
   return (
     <div className="container mx-auto px-5 pb-14 xl:px-4 2xl:px-4 sm:px-3 flex flex-col gap-10 py-8 2xl:!flex-row xl:!flex-row z-0">
-      {data.map((item) => (
-        <div className="bg-white px-7 py-6 flex flex-col justify-center items-center md:mx-28 lg:mx-48 rounded-md">
+      {data.map((item,index) => (
+         <motion.div
+         key={index}
+         whileHover={{ scale: 1.1}} // Adjust scale and opacity as needed
+        //  data-aos="fade-up"
+        //  data-aos-offset="300"
+         transition={{ duration: 0.5, ease: "easeInOut" }}
+         // data-aos-easing="easeInOut"
+         // data-aos-duration="200"
+       >
+        <div className="bg-white px-7 py-6 flex flex-col justify-center items-
+        center md:mx-28 lg:mx-48 rounded-md">
           <div>
             <img src={item.imageUrl} alt="" />
           </div>
@@ -43,6 +55,7 @@ const HomeCardsComp = () => {
             </p>
           </div>
         </div>
+        </motion.div>
       ))}
     </div>
   );

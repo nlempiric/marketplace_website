@@ -12,7 +12,6 @@ import NftDetails from "../pages/NftDetails";
 import { useSelector } from "react-redux";
 
 function AllRoutes() {
-  
   return (
     <>
       <Routes>
@@ -21,10 +20,7 @@ function AllRoutes() {
         <Route path="/blog" element={<BlogPage />} />
         <Route path={`/blog/:id`} element={<BlogDetailPage />} />
         <Route path="/MintNftPage" element={<MintNftPage />} />
-        <Route
-          path="/nfts/details/TransferNft/:id"
-          element={<TransferNft />}
-        />
+        <Route path="/nfts/details/TransferNft/:id" element={<TransferNft />} />
         <Route path="/nfts/details/UpdateNft/:id" element={<UpdateNft />} />
         <Route path="/MyCollection" element={<MyCollection />} />
         <Route path="/nfts/details/:id" element={<NftDetails />} />

@@ -54,11 +54,11 @@ const ListsinFooter = () => {
       </div>
       <div className="flex flex-col gap-4 ">
         <h2 className="text-[22px] font-medium">Get the latest NFT updates</h2>
-        <div id="contact" className="flex justify-between bg-white p-2 rounded-md shadow-lg lg:flex-col">
+        <div id="contact" className="flex justify-between bg-white p-2 rounded-md shadow-lg lg:flex-col ">
           <input
             type="email"
             placeholder="Your Email"
-            className="w-[65%] py-3 lg:w-full placeholder:px-3"
+            className="w-[65%] py-3 lg:w-full placeholder:px-3 focus:outline-none"
           />
           <button className="w-1/3 lg:w-full py-3 px-5 2xl:px-8 border border-1 border-gray-300 rounded-md text-[#050515] hover:bg-[#050515] hover:text-white">
             Send
