@@ -12,12 +12,12 @@ const AboutDetail = () => {
 
 
   return (
-    <div className="container mx-auto px-5 xl:px-4 2xl:px-4 sm:px-3 flex flex-col 2xl:!flex-row xl:flex-row justify-between py-24 gap-8 2xl:gap-16 xl:gap-16"
+    <div className="container mx-auto px-5 xl:px-4 2xl:px-4 sm:px-3 flex flex-col 2xl:!flex-row xl:flex-row justify-between dsm:py-0 py-24 gap-8 2xl:gap-16 xl:gap-16"
     data-aos="fade-up"
     data-aos-offset="300"
     data-aos-easing="ease-in-sine"
     data-aos-duration="1000">
-      <div className="2xl:w-1/2 lg:w-full flex justify-center">
+      <div className="2xl:w-1/2 lg:w-full dsm:p-9  md:p-6 flex justify-center">
         <img src="/aboutPage.webp" alt="" />
       </div>
       <div className="2xl:w-1/2 xl:w-1/2 w-full flex flex-col text-center 2xl:text-start  xl:text-start gap-8">

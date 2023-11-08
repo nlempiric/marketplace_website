@@ -92,13 +92,15 @@ const Sidebar = () => {
                   </button>
                   {toggledropdown && (
                     <>
-                      <button className="py-3 text-gray-400 text-center px-8 hover:bg-[#303030] ">
+                      <button className="py-3 text-gray-400 text-center px-8 hover:bg-[#303030] "
+                      onClick={handleCloseSidebar}>
                         <Link to="/MintNftPage">Mint Nft</Link>
                       </button>
                       {/* <button className="py-3 text-gray-400 text-start px-8 hover:bg-[#303030] ">
           <Link to="/TransferNft">Transfer Nft</Link>
           </button> */}
-                      <button className="py-3 text-gray-400 text-center px-8 hover:bg-[#303030] ">
+                      <button className="py-3 text-gray-400 text-center px-8 hover:bg-[#303030] "
+                      onClick={handleCloseSidebar}>
                         <Link to="/MyCollection">My Collection</Link>
                       </button>
                     </>

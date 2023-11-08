@@ -10,6 +10,7 @@ import UpdateNft from "../pages/UpdateNft";
 import MyCollection from "../pages/MyCollection";
 import NftDetails from "../pages/NftDetails";
 import { useSelector } from "react-redux";
+import AllNftPage from "../pages/AllNftPage";
 
 function AllRoutes() {
   return (
@@ -24,6 +25,7 @@ function AllRoutes() {
         <Route path="/nfts/details/UpdateNft/:id" element={<UpdateNft />} />
         <Route path="/MyCollection" element={<MyCollection />} />
         <Route path="/nfts/details/:id" element={<NftDetails />} />
+        <Route path="/AllNftPage" element={<AllNftPage />} />
       </Routes>
     </>
   );

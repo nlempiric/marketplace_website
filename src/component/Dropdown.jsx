@@ -3,13 +3,24 @@ import { PiCaretDownBold } from 'react-icons/pi'
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { toggleSidebar } from '../redux/reducer/togglesidebar'
 
 function classNames(...classes) {
+
   return classes.filter(Boolean).join(' ')
 }
 
+
 const Dropdown = () => {
 
+  const dispatch = useDispatch();
+
+
+  const handleCloseSidebar = () => {
+    console.log("logged")
+    dispatch(toggleSidebar(false));
+  };
 
 
   return (
@@ -35,41 +46,34 @@ const Dropdown = () => {
           <div>
             <Menu.Item >
               {({ active }) => (
-                <Link
-                  to="/MintNftPage"
-                  className={classNames(
-                    active && 'bg-[#050515] text-white' ,
-                    'block px-4 py-3 text-base rounded-t-md'
-                  )}
-                >
-                  Mint Nft
-                </Link>
+                <button className="w-full" onClick={handleCloseSidebar}>
+
+                  <Link
+                    to="/MintNftPage"
+                    className={classNames(
+                      active && 'bg-[#050515] text-white' ,
+                      'block px-4 py-3 text-base rounded-t-md'
+                    )}
+                  >
+                    Mint Nft
+                  </Link>
+                </button>
               )}
             </Menu.Item>
-            {/* <Menu.Item >
-              {({ active }) => (
-                <Link
-                to="/TransferNftPage"
-                  className={classNames(
-                    active && 'bg-[#050515] text-white' ,
-                    'block px-4 py-3 text-base'
-                  )}
-                >
-                  Transfer Nft
-                </Link>
-              )}
-            </Menu.Item> */}
+            
             <Menu.Item>
               {({ active }) => (
-                <Link
-                to="/MyCollection"
-                  className={classNames(
-                    active && 'bg-[#050515] text-white' ,
-                    'block px-4 py-3 text-base rounded-b-md'
-                  )}
-                >
-                  My Collection
-                </Link>
+                <button className="w-full" onClick={handleCloseSidebar}>
+                  <Link
+                  to="/MyCollection"
+                    className={classNames(
+                      active && 'bg-[#050515] text-white' ,
+                      'block px-4 py-3 text-base rounded-b-md'
+                    )}
+                  >
+                    My Collection
+                  </Link>
+                </button>
               )}
             </Menu.Item>
           </div>
