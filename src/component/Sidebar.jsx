@@ -74,15 +74,15 @@ const Sidebar = () => {
                   <button
                     className="py-3 text-center px-4 hover:bg-[#303030] "
                     onClick={(e) => {
-                      e.preventDefault();
-                      navigate("/");
-                      setTimeout(() => {
-                        scrollTo("collection");
-                      }, 500);
+                      // e.preventDefault();
+                      // navigate("/");
+                      // setTimeout(() => {
+                      //   scrollTo("collection");
+                      // }, 500);
                       handleCloseSidebar();
                     }}
                   >
-                    <Link>Collection</Link>
+                    <Link to="AllNftPage">Collection</Link>
                   </button>
                   <button
                     className="flex gap-4 justify-center items-center py-3 text-center px-4 hover:bg-[#303030] "

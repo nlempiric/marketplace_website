@@ -64,15 +64,15 @@ const Header = () => {
 
               <li
                 className="hover:text-[#050515] pb-1 hover:border-b border-[#050515]"
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigate("/");
-                  setTimeout(() => {
-                    scrollTo("collection");
-                  }, 500);
-                }}
+                // onClick={(e) => {
+                //   e.preventDefault();
+                //   navigate("/");
+                //   setTimeout(() => {
+                //     scrollTo("collection");
+                //   }, 500);
+                // }}
               >
-                <Link className="">Collection</Link>
+                <Link to="/AllNftPage">Collection</Link>
               </li>
               <li className=" pb-1">
                 <Dropdown />
