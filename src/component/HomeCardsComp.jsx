@@ -44,7 +44,7 @@ const HomeCardsComp = () => {
        >
         <div className="bg-white px-7 py-6 flex flex-col justify-center items-
         center md:mx-28 lg:mx-48 rounded-md">
-          <div>
+          <div className="flex justify-center">
             <img src={item.imageUrl} alt="" />
           </div>
           <div className="py-3 text-center flex flex-col gap-1">
