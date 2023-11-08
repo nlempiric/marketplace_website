@@ -12,8 +12,7 @@ const TransferNft = () => {
   const [selectedAddress, setselectedAddress] = useState("Select Address");
   const [selectedId, setselectedId] = useState("Select Id");
   const { id } = useParams();
-  const { data } = useSelector((state) => state.data);
-  console.log("trandsfefrer", data);
+
 
   const toggleDropdownforAddress = () => {
     setDropdownAddressOpen(!isDropdownAddressOpen);

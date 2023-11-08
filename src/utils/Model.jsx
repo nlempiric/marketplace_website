@@ -22,19 +22,12 @@ function Model({ismodelopen,setmodel}) {
 
   return (
     <>
-     {/* <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity:  1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.9 }}
-      className="modal-container"
-    > */}
     
     <motion.div
       initial={{ opacity: 0 }}
-      animate={{ opacity: ismodelopen ? 1 : 0 }}
+      animate={{ opacity: ismodelopen ? 2 : 0 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
+      transition={{ duration: 0.8 }}
       className={`w-full fixed inset-0 flex items-center justify-center bg-opacity-50 bg-black z-20 p-5`}
     >
       <div className="w-full fixed inset-0 flex items-center justify-center bg-opacity-50 bg-black z-20 p-5">

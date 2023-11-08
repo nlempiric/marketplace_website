@@ -3,10 +3,19 @@ import { FaEthereum } from "react-icons/fa";
 import { BsArrowRight } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { data } from "../utils/data";
+import { motion } from "framer-motion";
+
 
 const MyCollection = () => {
   return (
     <>
+     <motion.div
+        initial={{ opacity: 0, y: 90 }}
+        animate={{ opacity: 1, y: 0 }}   
+        exit={{ opacity: 0, y: 20 }} 
+        transition={{ duration: 0.9 }}  
+        className="box"                  
+      >
       <div className="container mx-auto px-5 xl:px-4 2xl:px-4 sm:px-3 min-h-[100vh] h-full py-10 ">
         <div className="grid grid-cols-1 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2  gap-10">
           {data.map((items) => (
@@ -29,6 +38,7 @@ const MyCollection = () => {
           ))}
         </div>
       </div>{" "}
+      </motion.div>
     </>
   );
 };
