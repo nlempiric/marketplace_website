@@ -7,8 +7,10 @@ import { scroller } from "react-scroll";
 import { useNavigate } from "react-router-dom";
 import { PiCaretDownBold } from "react-icons/pi";
 import { AnimatePresence, motion } from "framer-motion";
+import { useAccount } from "wagmi";
 
 const Sidebar = () => {
+  const { isConnected } = useAccount();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [toggledropdown, settoggledropdown] = useState(false);
@@ -32,13 +34,12 @@ const Sidebar = () => {
     <>
       <AnimatePresence>
         <motion.div
-          initial={{ x: 500}}
+          initial={{ x: 500 }}
           animate={{ x: 0 }}
           exit={{ x: -500 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="fixed top-0 right-0 w-full bg-opacity-90 bg-black z-50 overflow-hidden p-0 text-white h-[100vh]"
         >
-        
           <div
             className={`2xl:hidden fixed top-0 right-0 w-full bg-opacity-90 bg-black z-50 overflow-hidden p-0 text-white h-[100vh]`}
           >
@@ -52,55 +53,62 @@ const Sidebar = () => {
                     <AiOutlineClose />
                   </span>
                 </div>
-                <div className="flex flex-col justify-start text-start text-lg">
-                  <button
-                    className="py-3 text-center px-4 hover:bg-[#303030]"
+                <div className="flex flex-col justify-start text-center text-lg">
+                  <Link
+                    to="/"
+                    className="w-full hover:bg-[#303030]"
                     onClick={handleCloseSidebar}
                   >
-                    <Link to="/">Home</Link>
-                  </button>
-                  <button
-                    className="py-3 text-center px-4 hover:bg-[#303030] "
+                    <button className="py-3 text-center px-4 ">Home</button>
+                  </Link>
+                  <Link
+                    to="/about"
+                    className="w-full hover:bg-[#303030]"
                     onClick={handleCloseSidebar}
                   >
-                    <Link to="/about">About</Link>
-                  </button>
-                  <button
-                    className="py-3 text-center px-4 hover:bg-[#303030] "
+                    <button className="py-3 text-center px-4 ">About</button>
+                  </Link>
+                  <Link
+                    to="/blog"
+                    className="w-full hover:bg-[#303030]"
                     onClick={handleCloseSidebar}
                   >
-                    <Link to="/blog">Blog</Link>
-                  </button>
-                  <button
-                    className="py-3 text-center px-4 hover:bg-[#303030] "
-                    onClick={(e) => {
-                      // e.preventDefault();
-                      // navigate("/");
-                      // setTimeout(() => {
-                      //   scrollTo("collection");
-                      // }, 500);
-                      handleCloseSidebar();
-                    }}
+                    <button className="py-3 text-center px-4 ">Blog</button>
+                  </Link>
+                  <Link
+                    to="/AllNftPage"
+                    className="w-full hover:bg-[#303030]"
+                    onClick={handleCloseSidebar}
                   >
-                    <Link to="AllNftPage">Collection</Link>
-                  </button>
-                  <button
-                    className="flex gap-4 justify-center items-center py-3 text-center px-4 hover:bg-[#303030] "
-                    onClick={handleDropdown}
-                  >
-                    Explore <PiCaretDownBold />
-                  </button>
+                    <button className="py-3 text-center px-4 ">Collection</button>
+                  </Link>
+
+                 
+                 
+                  {isConnected && (
+                    <button
+                      className="flex gap-4 justify-center items-center py-3 text-center px-4 hover:bg-[#303030] "
+                      onClick={handleDropdown}
+                    >
+                      Explore <PiCaretDownBold />
+                    </button>
+                  )}
+
                   {toggledropdown && (
                     <>
-                      <button className="py-3 text-gray-400 text-center px-8 hover:bg-[#303030] "
-                      onClick={handleCloseSidebar}>
+                      <button
+                        className="py-3 text-gray-400 text-center px-8 hover:bg-[#303030] "
+                        onClick={handleCloseSidebar}
+                      >
                         <Link to="/MintNftPage">Mint Nft</Link>
                       </button>
                       {/* <button className="py-3 text-gray-400 text-start px-8 hover:bg-[#303030] ">
           <Link to="/TransferNft">Transfer Nft</Link>
           </button> */}
-                      <button className="py-3 text-gray-400 text-center px-8 hover:bg-[#303030] "
-                      onClick={handleCloseSidebar}>
+                      <button
+                        className="py-3 text-gray-400 text-center px-8 hover:bg-[#303030] "
+                        onClick={handleCloseSidebar}
+                      >
                         <Link to="/MyCollection">My Collection</Link>
                       </button>
                     </>

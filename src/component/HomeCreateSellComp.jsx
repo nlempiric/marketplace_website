@@ -51,8 +51,8 @@ const HomeCreateSellComp = () => {
         data-aos-easing="ease-in-sine"
         data-aos-duration="1000"
       >
-        {data.map((items) => (
-          <div className="flex flex-col gap-2 items-center p-5 justify-center rounded-md">
+        {data.map((items,index) => (
+          <div key={index} className="flex flex-col gap-2 items-center p-5 justify-center rounded-md">
             <div className="bg-[#050515] self-start p-5 rounded-full text-3xl">
             {/* <div className="bg-gradient-to-r from-[#f2ebd9] to-[#d1dfe5] via-[#dfe8dd]  p-5 rounded-full text-3xl self-start"> */}
               {items.icon}

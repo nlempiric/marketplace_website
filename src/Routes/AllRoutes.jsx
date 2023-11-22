@@ -12,20 +12,20 @@ import NftDetails from "../pages/NftDetails";
 import { useSelector } from "react-redux";
 import AllNftPage from "../pages/AllNftPage";
 
-function AllRoutes() {
+function AllRoutes({nftDetail,setnftDetails,loadingforExplore}) {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Homepage />} />
+        <Route path="/" element={<Homepage nftDetail={nftDetail} loadingforExplore={loadingforExplore} setnftDetails={setnftDetails}/>} />
         <Route path="/about" element={<Aboutpage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path={`/blog/:id`} element={<BlogDetailPage />} />
         <Route path="/MintNftPage" element={<MintNftPage />} />
         <Route path="/nfts/details/TransferNft/:id" element={<TransferNft />} />
         <Route path="/nfts/details/UpdateNft/:id" element={<UpdateNft />} />
-        <Route path="/MyCollection" element={<MyCollection />} />
-        <Route path="/nfts/details/:id" element={<NftDetails />} />
-        <Route path="/AllNftPage" element={<AllNftPage />} />
+        <Route path="/MyCollection" element={<MyCollection loadingforExplore={loadingforExplore} />} />
+        <Route path="/nfts/details/" element={<NftDetails nftDetail={nftDetail}/>} />
+        <Route path="/AllNftPage" element={<AllNftPage nftDetail={nftDetail} loadingforExplore={loadingforExplore} setnftDetails={setnftDetails}/>} />
       </Routes>
     </>
   );

@@ -8,68 +8,40 @@ import { motion } from "framer-motion";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { totalSupply } from "../utils/queries";
+import { ethers } from "ethers";
+import Loader from "react-js-loader";
+import { getData } from "../redux/reducer/dataSlice";
 
-const data = [
-  {
-    imageUrl: "/collection1.webp",
-    Name: "Abstract Art",
-    price: "175",
-  },
-  {
-    imageUrl: "/collection2.webp",
-    Name: "Colorful Abstract",
-    price: "25",
-  },
-  {
-    imageUrl: "/collection3.webp",
-    Name: "Colorful Abstract",
-    price: "40",
-  },
-  {
-    imageUrl: "/collection4.webp",
-    Name: "Colorful Abstract",
-    price: "40",
-  },
-  {
-    imageUrl: "/collection5.webp",
-    Name: "Colorful Abstract",
-    price: "40",
-  },
-  {
-    imageUrl: "/collection6.webp",
-    Name: "Colorful Abstract",
-    price: "40",
-  },
-];
+const HomeExploreNft = ({ nftDetail, loadingforExplore, setnftDetails }) => {
+  const dispatch = useDispatch();
 
-const HomeExploreNft = () => {
-  const [prevButtonDisabled, setPrevButtonDisabled] = useState(true);
-  const [nextButtonDisabled, setNextButtonDisabled] = useState(
-    data.length <= 3
-  );
+  const navigate = useNavigate();
 
   const settings = {
     // dots: true,
     // infinite: true,
     speed: 500,
-    slidesToShow:  3 ,
-    slidesToScroll:3 ,
-    prevArrow: <MdOutlineArrowBackIos fill="gray"/>,
-    nextArrow: <MdOutlineArrowForwardIos fill="gray"/>,
+    // autoplay: true,
+    // autoplaySpeed: 2000,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: nftDetail.length >= 3 ? 3 : nftDetail.length,
+          slidesToScroll: 1,
           infinite: true,
         },
       },
       {
         breakpoint: 770,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: nftDetail.length >= 2 ? 2 : 2,
           slidesToScroll: 2,
           infinite: true,
         },
@@ -77,9 +49,21 @@ const HomeExploreNft = () => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
+          autoplay: true,
+          autoplaySpeed: 2000,
+          slidesToShow: nftDetail.length >= 2 ? 2 : 1,
           slidesToScroll: 2,
           initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 550,
+        settings: {
+          autoplay: true,
+          autoplaySpeed: 2000,
+          slidesToShow:  2,
+          slidesToScroll: 1,
+          initialSlide: 1,
         },
       },
       {
@@ -87,6 +71,8 @@ const HomeExploreNft = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 2000,
         },
       },
     ],
@@ -96,7 +82,12 @@ const HomeExploreNft = () => {
     AOS.init({
       once: true,
     });
-  }, [data]);
+  }, []);
+
+  const handleclickNft = (items) => {
+    dispatch(getData(items));
+    navigate("/nfts/details");
+  };
 
   return (
     <>
@@ -105,37 +96,58 @@ const HomeExploreNft = () => {
         className="container mx-auto px-5 xl:px-4 2xl:px-4 sm:px-3 my-32 font"
       >
         <h1 className="text-4xl font-semibold my-12">Explore NFTs</h1>
-        <Slider {...settings}>
-          {data.map((items, index) => (
-            <motion.div
-              key={index}
-              whileHover={{ scale: 1.1, opacity: 0.9 }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
+
+        {loadingforExplore ? (
+          <div className="py-32">
+            <Loader
+              loaded={!loadingforExplore}
+              type="bubble-scale"
+              bgColor={"#050515"}
+              color={"#050515"}
             >
-              <div className="flex flex-col m-5 items-center p-5 justify-center border border-1 border-gray-300 rounded-md hover:shadow-lg">
-                <div>
-                  <img src={items.imageUrl} alt="" />
-                </div>
-                <div className="py-3 self-center 2xl:self-start flex flex-col gap-1">
-                  <h1 className="text-[18px] 2xl:text-[22px] dsm:text-[17px] break-all">
-                    {items.Name}
-                  </h1>
-                  <h2 className="text-[16px] 2xl:text-[20px] dsm:text-[15px] flex items-center">
-                    <span>
-                      <FaEthereum />
-                    </span>
-                    <span>{items.price} ETH</span>
-                  </h2>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </Slider>
+              Loading...
+            </Loader>
+          </div>
+        ) : (
+          <Slider {...settings}>
+            {nftDetail?.map((items, index) => (
+              <>
+                <motion.div
+                  key={index}
+                  whileHover={{ scale: 1.1, opacity: 0.9 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  className="p-6 m-auto"
+                >
+                  <div 
+                    className=" w-fit p-5 m-auto flex flex-col mt-1 items-center justify-center border border-1 border-gray-300 rounded-md hover:shadow-lg cursor-pointer"
+                    onClick={(e) => handleclickNft(items)}
+                  >
+                    <div className="w-[200px] h-[200px] 2xl:w-[250px] 2xl:h-[280px] xl:w-[200px] xl:h-[210px] lg:w-[180px] lg:h-[200px] md:w-[200px] md:h-[200px]  border border-red-500">
+                      <img src={items?.tokenUri} alt="" className="w-full h-full object-cover"/>
+                    </div>
+                    <div className="py-3 self-center 2xl:self-start flex flex-col gap-1">
+                      <h1 className="text-[18px] 2xl:text-[22px] dsm:text-[17px] break-all">
+                        {items?.name}
+                      </h1>
+                      <h2 className="text-[16px] 2xl:text-[20px] dsm:text-[15px] flex items-start">
+                        <span>
+                          <FaEthereum />
+                        </span>
+                        <span>
+                          {ethers.utils.formatEther(Number(items?.price._hex))}{" "}
+                          ETH
+                        </span>
+                      </h2>
+                    </div>
+                  </div>
+                </motion.div>
+              </>
+            ))}
+          </Slider>
+        )}
+
         <div className="flex justify-center pt-14">
-          <button
-            className="px-10 py-3 border border-1 border-gray-400 rounded-md text-[#050515] hover:bg-[#050515] hover:text-white"
-            disabled={prevButtonDisabled}
-          >
+          <button className="px-10 py-3 border border-1 border-gray-400 rounded-md text-[#050515] hover:bg-[#050515] hover:text-white">
             <Link to="/AllNftPage">
               <h3>See All</h3>
             </Link>

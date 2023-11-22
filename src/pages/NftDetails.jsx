@@ -3,38 +3,28 @@ import { Link, useParams } from "react-router-dom";
 import { data } from "../utils/data";
 import NftDetailButtonComp from "../component/NftDetailButtonComp";
 import Para from "../component/Para";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../redux/reducer/dataSlice";
 import Model from "../utils/Model";
 import { motion } from "framer-motion";
 import ImageModel from "../utils/ImageModel";
+import { ethers } from "ethers";
 
 function NftDetails() {
-  const { id } = useParams();
-  const [item, setItem] = useState("");
-  const [showText,setShowText ] = useState(false);
+  const { idata } = useSelector((state) => state.root.clikcedData);
+  const [showText, setShowText] = useState(false);
   const [showImage, setshowImage] = useState(false);
   const dispatch = useDispatch();
   const [ismodelopen, setmodel] = useState(false);
-  console.log("id from useParams:", id);
-  useEffect(() => {
-    const blogData = data.find((item) => item.id == id);
+  const etherValue = isNaN(Number(idata[1].hex))? 0 : ethers.utils.formatEther(Number(idata[1].hex))
 
-    if (blogData) {
-      dispatch(getData(blogData));
-      setItem(blogData);
-    }
-  }, [id]);
-
-  console.log("item", item);
-
-  const handleImageShow = () => {
-    setshowImage  (!showImage);
+  const handleImageShow = (imgurl) => {
+    setshowImage(!showImage);
   };
 
   return (
     <>
-      {item ? (
+      {idata ? (
         <>
           <motion.div
             initial={{ opacity: 0, y: 90 }}
@@ -49,9 +39,9 @@ function NftDetails() {
                   className="2xl:w-1/2 xl:w-1/2 2xl:h-[385px] xl:h-[385px] lg:h-[385px] h-[385px] sm:h-[300px] rounded-lg lg:w-1/2 flex justify-center items-center hover:cursor-pointer transition-transform transform scale-100 hover:scale-105 duration-300 ease-in-out"
                   onClick={handleImageShow}
                 >
-                  {item.imageUrl ? (
+                  {idata[5] ? (
                     <img
-                      src={item.imageUrl}
+                      src={idata[5]}
                       alt=""
                       className="w-full h-full object-cover rounded-lg"
                     />
@@ -63,15 +53,16 @@ function NftDetails() {
                   <div className="flex flex-col gap-12 h-full">
                     <div className="flex flex-col gap-4">
                       <h2 className="text-[42px] text-[#050515] ">
-                        {item.name}
+                        {idata[2]}
                       </h2>
                       <h3 className="text-[30px] text-[#050515] ">
-                        {item.price} ETH
+                      {etherValue} ETH
+                      {/* // ethers.utils.formatEther(Number(idata[1].hex)) */}
                       </h3>
                     </div>
                     <div className="2xl:hidden xl:hidden lg:hidden ">
                       <Para
-                        text={item.description}
+                        text={idata.desc}
                         setShowText={setShowText}
                         showText={showText}
                       />
@@ -80,7 +71,8 @@ function NftDetails() {
                     <div className="flex flex-col gap-6 flex-wrap w-full">
                       <NftDetailButtonComp
                         btnname="Update"
-                        to={`/nfts/details/UpdateNft/${item.id}`}
+                        // to={`/nfts/details/UpdateNft/${item.id`}
+                        to="/"
                       />
                       <div onClick={() => setmodel(true)}>
                         <NftDetailButtonComp btnname="Transfer" />
@@ -93,7 +85,7 @@ function NftDetails() {
               </div>
               <div className="md:hidden hidden 2xl:block xl:block lg:block mb-16">
                 <Para
-                  text={item.description}
+                  text={idata[4]}
                   setShowText={setShowText}
                   showText={showText}
                 />
@@ -108,7 +100,7 @@ function NftDetails() {
       {ismodelopen && <Model ismodelopen={ismodelopen} setmodel={setmodel} />}
       {showImage && (
         <ImageModel
-          item={item}
+          item={data.tokenUri}
           showImage={showImage}
           setshowImage={setshowImage}
         />

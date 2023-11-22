@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { getData } from "../redux/reducer/dataSlice";
 
 const UpdateNft = () => {
   const [fileName, setFileName] = useState("Choose a file");

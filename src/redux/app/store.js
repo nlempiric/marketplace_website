@@ -1,12 +1,30 @@
-import { configureStore } from "@reduxjs/toolkit";
-import rootReducer from "../reducer/index";
-import dataSlice from "../reducer/dataSlice"; // Make sure to import the dataSlice correctly
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import dataSlice from "../reducer/dataSlice";
+import totalsupply from "../reducer/totalsupply";
+import sidebarCheck from "../reducer/togglesidebar";
 
-const store = configureStore({
+const persistConfig = {
+  key: "root",
+  storage,
+};
+
+const rootReducer = combineReducers({
+  sidebar: sidebarCheck.reducer,
+  clikcedData: dataSlice.reducer,
+});
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = configureStore({
   reducer: {
-    root: rootReducer,
-    data: dataSlice.reducer, // Add the dataSlice reducer to the store under the 'data' key
+    root: persistedReducer,
+    // data: dataSlice.reducer,
+    // tsupply: totalsupply.reducer,
   },
 });
 
-export default store;
+const persistor = persistStore(store);
+
+export { persistor };

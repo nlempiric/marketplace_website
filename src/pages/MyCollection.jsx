@@ -18,8 +18,8 @@ const MyCollection = () => {
       >
       <div className="container mx-auto px-5 xl:px-4 2xl:px-4 sm:px-3 min-h-[100vh] h-full py-10 ">
         <div className="grid grid-cols-1 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2  gap-10">
-          {data.map((items) => (
-            <Link to={`/nfts/details/${items.id}`}>
+          {data.map((items,index) => (
+            <Link to={`/nfts/details/${items.id}`} key={index}>
               <div className="justify-self-center border border-1 border-gray-400 bg-white p-4 flex flex-col justify-center items-center rounded-md">
                 <div>
                   <img src={items.imageUrl} alt="" />

@@ -9,8 +9,14 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { scroller } from "react-scroll";
 import Dropdown from "./Dropdown";
+import { Web3Button } from "@web3modal/react";
+import { useWeb3Modal } from "@web3modal/react";
+import { useAccount } from "wagmi";
 
 const Header = () => {
+  const { open } = useWeb3Modal();
+  const { address, isConnected } = useAccount();
+
   const navigate = useNavigate();
 
   const scrollTo = (target) => {
@@ -28,7 +34,6 @@ const Header = () => {
 
   const dispatch = useDispatch();
   const sidebarisOpen = useSelector((state) => state.root.sidebar.isOpen);
-  console.log(sidebarisOpen, "+++++++++++++++++++++++");
   const handleOpenSidebar = () => {
     dispatch(toggleSidebar(true));
   };
@@ -74,9 +79,13 @@ const Header = () => {
               >
                 <Link to="/AllNftPage">Collection</Link>
               </li>
-              <li className=" pb-1">
-                <Dropdown />
-              </li>
+              {isConnected && 
+                <>
+                  <li className=" pb-1">
+                    <Dropdown />
+                  </li>
+                </>
+              }
               <li
                 className="hover:text-[#050515] pb-1 hover:border-b border-[#050515]"
                 onClick={(e) => {
@@ -91,9 +100,15 @@ const Header = () => {
               </li>
             </ul>
           </div>
+         
           <div className="text-lg sm:hidden dsm:hidden">
-            <button className="px-5 py-3 border border-1 border-gray-400 rounded-md text-[#050515] hover:bg-[#050515] hover:text-white">
-              Connect Wallet
+            
+            <button
+              className="px-5 py-3 border border-1 border-gray-400 rounded-md text-[#050515] hover:bg-[#050515] hover:text-white"
+              onClick={() => open()}
+            >
+              {" "}
+              {isConnected ? `${address.substring(0, 12)}...` : "Connect wallet"}
             </button>
           </div>
           <div

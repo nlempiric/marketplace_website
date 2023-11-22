@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 
 const ImageModel = ({ item, showImage, setshowImage }) => {
+  console.log("gdngfjskhfbsdjjjjjjk")
   const modalRef = useRef(null);
 
   const handleClose = () => {
@@ -14,6 +15,7 @@ const ImageModel = ({ item, showImage, setshowImage }) => {
     }
   };
 
+  console.log("items of image url",item)
   return (
     <>
       {showImage && (
@@ -30,7 +32,7 @@ const ImageModel = ({ item, showImage, setshowImage }) => {
             </div>
             <div className="h-full flex justify-center items-center px-2">
               <img
-                src={item.imageUrl}
+                src={item}
                 alt=""
                 className="h-96 w-96 object-contain"
               />

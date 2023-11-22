@@ -6,10 +6,10 @@ function Para({ text, setShowText, showText }) {
       <div className="bg-[#F8F8FF] p-5 rounded-md overflow-y-auto ">
         <h2 className="text-[20px]">Description</h2>
         <p className="">
-          {text.substring(0, 100)}
+          {text?.substring(0, 100)}
           {!showText && <span>......</span>}
 
-          {showText && text.substring(100)}
+          {showText && text?.substring(100)}
         </p>
         <button
           className="text-blue-800 mt-2 rounded-lg"
