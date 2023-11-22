@@ -89,6 +89,7 @@ const HomeExploreNft = ({ nftDetail, loadingforExplore, setnftDetails }) => {
     navigate("/nfts/details");
   };
 
+  console.log("dfdfdf")
   return (
     <>
       <div
