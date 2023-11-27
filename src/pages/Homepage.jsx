@@ -5,7 +5,6 @@ import HomeExploreNft from "../component/HomeExploreNft";
 import HomeCreateSellComp from "../component/HomeCreateSellComp";
 import ListsinFooter from "../component/ListsinFooter";
 import { motion } from "framer-motion";
-import { useSelector } from "react-redux";
 
 const Homepage = ({nftDetail,loadingforExplore,setnftDetails}) => {
 

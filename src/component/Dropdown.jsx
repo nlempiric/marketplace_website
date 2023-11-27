@@ -44,9 +44,9 @@ const Dropdown = () => {
       >
         <Menu.Items className="absolute -left-12  z-50 mt-2 w-56 origin-top-right rounded-md bg-gray-200 shadow-lg focus:outline-none">
           <div>
-            <Menu.Item >
+            <Menu.Item onClick={handleCloseSidebar}>
               {({ active }) => (
-                <button className="w-full" onClick={handleCloseSidebar}>
+                <button className="w-full" >
 
                   <Link
                     to="/MintNftPage"
@@ -61,9 +61,9 @@ const Dropdown = () => {
               )}
             </Menu.Item>
             
-            <Menu.Item>
+            <Menu.Item onClick={handleCloseSidebar}>
               {({ active }) => (
-                <button className="w-full" onClick={handleCloseSidebar}>
+                <button className="w-full" >
                   <Link
                   to="/MyCollection"
                     className={classNames(

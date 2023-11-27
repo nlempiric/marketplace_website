@@ -104,8 +104,8 @@ const BlogsComponent = () => {
      >
     
     <div className="grid grid-cols-1 2xl:grid-cols-2 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-1 gap-8">
-        {data.map((items) => (
-            <div className="flex flex-col gap-2 items-center  justify-center rounded-md">
+        {data.map((items,index) => (
+            <div key={index} className="flex flex-col gap-2 items-center  justify-center rounded-md">
                 <img src={items.imageurl} alt="" className="rounded-xl"/>
                 <div className="py-3 self-center flex flex-col gap-2 2xl:self-start ">
                 <h1 className="text-[22px] font-semibold py-2">

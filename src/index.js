@@ -19,6 +19,7 @@ import {
 import { Web3Modal } from "@web3modal/react";
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "./redux/app/store";
+import { ProviderContract } from "./utils/contractFunction";
 // import { store, persistor } from "@/redux/store";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -38,6 +39,8 @@ const NFT_STORAGE_TOKEN =
 const client = new NFTStorage({ token: NFT_STORAGE_TOKEN });
 
 export const MainContext = createContext();
+
+
 
 root.render(
   <WagmiConfig config={wagmiConfig}>

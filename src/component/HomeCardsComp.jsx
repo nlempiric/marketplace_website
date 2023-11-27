@@ -6,11 +6,14 @@ import { motion } from "framer-motion";
 
 
 const HomeCardsComp = () => {
+
   useEffect(() => {
     AOS.init({
       once: true,
     });
   }, []);
+
+ 
 
   const data = [
     {
@@ -35,12 +38,10 @@ const HomeCardsComp = () => {
       {data.map((item,index) => (
          <motion.div
          key={index}
-         whileHover={{ scale: 1.1}} // Adjust scale and opacity as needed
-        //  data-aos="fade-up"
-        //  data-aos-offset="300"
+         whileHover={{ scale: 1.1}} 
+       
          transition={{ duration: 0.5, ease: "easeInOut" }}
-         // data-aos-easing="easeInOut"
-         // data-aos-duration="200"
+        
        >
         <div className="bg-white px-7 py-6 flex flex-col justify-center items-
         center md:mx-28 lg:mx-48 rounded-md">

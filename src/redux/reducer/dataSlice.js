@@ -7,7 +7,6 @@ const DataSlice = createSlice({
   },
   reducers: {
     getData: (state, action) => {
-      console.log("erf5tewer", action.payload);
       state.idata = action.payload;
     },
   },

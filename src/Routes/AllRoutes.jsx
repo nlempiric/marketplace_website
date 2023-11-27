@@ -9,10 +9,9 @@ import TransferNft from "../pages/TransferNft";
 import UpdateNft from "../pages/UpdateNft";
 import MyCollection from "../pages/MyCollection";
 import NftDetails from "../pages/NftDetails";
-import { useSelector } from "react-redux";
 import AllNftPage from "../pages/AllNftPage";
 
-function AllRoutes({nftDetail,setnftDetails,loadingforExplore}) {
+function AllRoutes({change,setchange,filteredAddress,nftDetail,setnftDetails,loadingforExplore}) {
   return (
     <>
       <Routes>
@@ -20,11 +19,11 @@ function AllRoutes({nftDetail,setnftDetails,loadingforExplore}) {
         <Route path="/about" element={<Aboutpage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path={`/blog/:id`} element={<BlogDetailPage />} />
-        <Route path="/MintNftPage" element={<MintNftPage />} />
+        <Route path="/MintNftPage" element={<MintNftPage setchange={setchange} />} />
         <Route path="/nfts/details/TransferNft/:id" element={<TransferNft />} />
-        <Route path="/nfts/details/UpdateNft/:id" element={<UpdateNft />} />
-        <Route path="/MyCollection" element={<MyCollection loadingforExplore={loadingforExplore} />} />
-        <Route path="/nfts/details/" element={<NftDetails nftDetail={nftDetail}/>} />
+        <Route path="/nfts/details/UpdateNft" element={<UpdateNft setchange={setchange}/>} />
+        <Route path="/MyCollection" element={<MyCollection nftDetail={nftDetail} loadingforExplore={loadingforExplore} setnftDetails={setnftDetails} />} />
+        <Route path="/nfts/details/" element={<NftDetails change={change} setchange={setchange} filteredAddress={filteredAddress} nftDetail={nftDetail}/>} />
         <Route path="/AllNftPage" element={<AllNftPage nftDetail={nftDetail} loadingforExplore={loadingforExplore} setnftDetails={setnftDetails}/>} />
       </Routes>
     </>
