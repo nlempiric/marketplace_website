@@ -104,9 +104,7 @@ const Sidebar = () => {
                       >
                         <Link to="/MintNftPage">Mint Nft</Link>
                       </button>
-                      {/* <button className="py-3 text-gray-400 text-start px-8 hover:bg-[#303030] ">
-          <Link to="/TransferNft">Transfer Nft</Link>
-          </button> */}
+                  
                       <button
                         className="py-3 text-gray-400 text-center px-8 hover:bg-[#303030] "
                         onClick={handleCloseSidebar}
@@ -128,9 +126,7 @@ const Sidebar = () => {
                   >
                     <Link>Contact</Link>
                   </button>
-                  {/* <button className="py-3 text-center px-4 hover:bg-[#303030] justify-center items-center hidden dsm:!flex">
-                    <Link to="/blog">Connect Wallet</Link>
-                  </button> */}
+                 
                   <button
                     className="py-3 text-center px-4 hover:bg-[#303030] justify-center items-center hidden dsm:!flex"
                     onClick={() => open()}
