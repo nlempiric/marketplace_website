@@ -60,6 +60,8 @@ const CheckModel = ({
       }
     } catch (err) {
       console.log("errorrr", err);
+      setBannerOpen(true)
+      setmessage("transaction Failed")
     } finally {
       setcheckmodel(false);
       console.log("finally");

@@ -4,7 +4,6 @@ import { ethers } from "ethers";
 export const Contract = async () => {
   try {
     const providers = new ethers.providers.Web3Provider(window.ethereum);
-    console.log("providerr",providers)
     const signer = providers.getSigner();
     const contractAddress = "0xE8BE95E51695dfb318d89AE5bDF86c77425FeEEf";
     const contractAbi = abi.abi;

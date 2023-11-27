@@ -66,26 +66,20 @@ const Header = () => {
               <li className="hover:text-[#050515] pb-1 hover:border-b border-[#050515]">
                 <Link to="/blog">Blog</Link>
               </li>
-
-              <li
-                className="hover:text-[#050515] pb-1 hover:border-b border-[#050515]"
-                // onClick={(e) => {
-                //   e.preventDefault();
-                //   navigate("/");
-                //   setTimeout(() => {
-                //     scrollTo("collection");
-                //   }, 500);
-                // }}
-              >
-                <Link to="/AllNftPage">Collection</Link>
-              </li>
-              {isConnected && 
+              {isConnected && (
+                <>
+                  <li className="hover:text-[#050515] pb-1 hover:border-b border-[#050515]">
+                    <Link to="/AllNftPage">Collection</Link>
+                  </li>
+                </>
+              )}
+              {isConnected && (
                 <>
                   <li className=" pb-1">
                     <Dropdown />
                   </li>
                 </>
-              }
+              )}
               <li
                 className="hover:text-[#050515] pb-1 hover:border-b border-[#050515]"
                 onClick={(e) => {
@@ -100,15 +94,16 @@ const Header = () => {
               </li>
             </ul>
           </div>
-         
+
           <div className="text-lg sm:hidden dsm:hidden">
-            
             <button
               className="px-5 py-3 border border-1 border-gray-400 rounded-md text-[#050515] hover:bg-[#050515] hover:text-white"
               onClick={() => open()}
             >
               {" "}
-              {isConnected ? `${address.substring(0, 12)}...` : "Connect wallet"}
+              {isConnected
+                ? `${address.substring(0, 12)}...`
+                : "Connect wallet"}
             </button>
           </div>
           <div

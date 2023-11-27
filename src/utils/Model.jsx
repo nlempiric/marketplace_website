@@ -6,7 +6,7 @@ import { MintTo, transferNft } from "./queries";
 import { useAccount } from "wagmi";
 import BannerModel from "./BannerModel";
 
-function Model({setmessage,setBannerOpen, setchange, tid, ismodelopen, setmodel, filteredAddress }) {
+function Model({change,setmessage,setBannerOpen, setchange, tid, ismodelopen, setmodel, filteredAddress }) {
   const { address, isConnected } = useAccount();
   const [isDropdownAddressOpen, setDropdownAddressOpen] = useState(false);
   const [selectedAddress, setselectedAddress] = useState("Select address");
@@ -31,7 +31,7 @@ function Model({setmessage,setBannerOpen, setchange, tid, ismodelopen, setmodel,
         const transfernft = await transferNft(address, selectedAddress, tid);
         console.log("logggg.................................", transfernft);
         setmessage("Nft Transfered Successfully");
-        setchange(true);
+        setchange(!change);
       } catch (err) {
         console.log("errror", err);
         setmessage("Transaction Failed");

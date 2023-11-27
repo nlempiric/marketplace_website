@@ -36,8 +36,6 @@ function NftDetails({ change, filteredAddress, setchange }) {
 
   };
 
-  console.log("messageeeeee",message)
-
 
   return (
     <>
@@ -183,6 +181,7 @@ function NftDetails({ change, filteredAddress, setchange }) {
       )}
       {ismodelopen && (
         <Model
+          change={change}
           setchange={setchange}
           tid={tid}
           filteredAddress={filteredAddress}
