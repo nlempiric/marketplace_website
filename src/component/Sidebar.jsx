@@ -8,9 +8,11 @@ import { useNavigate } from "react-router-dom";
 import { PiCaretDownBold } from "react-icons/pi";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAccount } from "wagmi";
+import { useWeb3Modal } from "@web3modal/react";
 
 const Sidebar = () => {
-  const { isConnected } = useAccount();
+  const { address, isConnected } = useAccount();
+  const { open } = useWeb3Modal();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [toggledropdown, settoggledropdown] = useState(false);
@@ -80,11 +82,11 @@ const Sidebar = () => {
                     className="w-full hover:bg-[#303030]"
                     onClick={handleCloseSidebar}
                   >
-                    <button className="py-3 text-center px-4 ">Collection</button>
+                    <button className="py-3 text-center px-4 ">
+                      Collection
+                    </button>
                   </Link>
 
-                 
-                 
                   {isConnected && (
                     <button
                       className="flex gap-4 justify-center items-center py-3 text-center px-4 hover:bg-[#303030] "
@@ -126,8 +128,17 @@ const Sidebar = () => {
                   >
                     <Link>Contact</Link>
                   </button>
-                  <button className="py-3 text-center px-4 hover:bg-[#303030] justify-center items-center hidden dsm:!flex">
+                  {/* <button className="py-3 text-center px-4 hover:bg-[#303030] justify-center items-center hidden dsm:!flex">
                     <Link to="/blog">Connect Wallet</Link>
+                  </button> */}
+                  <button
+                    className="py-3 text-center px-4 hover:bg-[#303030] justify-center items-center hidden dsm:!flex"
+                    onClick={() => open()}
+                  >
+                    {" "}
+                    {isConnected
+                      ? `${address.substring(0, 12)}...`
+                      : "Connect wallet"}
                   </button>
                 </div>
               </div>
