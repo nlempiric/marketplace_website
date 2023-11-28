@@ -13,7 +13,7 @@ import { getData } from "../redux/reducer/dataSlice";
 import { useAccount } from "wagmi";
 
 const HomeExploreNft = ({ nftDetail, loadingforExplore, setnftDetails }) => {
-  const { address, isConnected } = useAccount();
+  const {  isConnected } = useAccount();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -88,7 +88,6 @@ const HomeExploreNft = ({ nftDetail, loadingforExplore, setnftDetails }) => {
     navigate("/nfts/details");
   };
 
-  console.log("isconectedddddd",isConnected)
   return (
     <>
       {isConnected && (

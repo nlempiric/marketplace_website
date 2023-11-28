@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { data } from "../utils/data";
+import React, {  useState } from "react";
 import NftDetailButtonComp from "../component/NftDetailButtonComp";
 import Para from "../component/Para";
-import { useDispatch, useSelector } from "react-redux";
-import { getData } from "../redux/reducer/dataSlice";
+import {  useSelector } from "react-redux";
 import Model from "../utils/Model";
 import { motion } from "framer-motion";
 import ImageModel from "../utils/ImageModel";
@@ -19,7 +16,6 @@ function NftDetails({ change, filteredAddress, setchange }) {
   const { idata } = useSelector((state) => state.root.clikcedData);
   const [showText, setShowText] = useState(false);
   const [showImage, setshowImage] = useState(false);
-  const dispatch = useDispatch();
   const [ismodelopen, setmodel] = useState(false);
   const [ischeckmodelopen, setcheckmodel] = useState(false);
   const [checkmessage, setcheckmessage] = useState();
@@ -193,7 +189,7 @@ function NftDetails({ change, filteredAddress, setchange }) {
       )}
       {showImage && (
         <ImageModel
-          item={data.tokenUri}
+          item={idata.tokenUri}
           showImage={showImage}
           setshowImage={setshowImage}
         />

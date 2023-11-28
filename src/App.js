@@ -1,36 +1,21 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "./Layout";
-import { MainContext } from "./index";
 import "./App.css";
 import AllRoutes from "./Routes/AllRoutes";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { totalsupply } from "./redux/reducer/totalsupply";
-import { collection, totalSupply } from "./utils/queries";
+import { collection } from "./utils/queries";
 import { ProviderContract } from "./utils/contractFunction";
 import { useAccount } from "wagmi";
 
 function App() {
-  const { address, isConnected } = useAccount();
+  const { address } = useAccount();
   const [loadingforExplore, setloadingforExplore] = useState(false);
   const [allAccounts, setallAccounts] = useState([]);
   const [filteredAddress, setfilteredAddress] = useState([]);
-  let { ncontract } = useContext(MainContext);
   const dispatch = useDispatch();
   const [nftDetail, setnftDetails] = useState([]);
   const [change, setchange] = useState(false);
-  const [cardData, setcardData] = useState([]);
-
-  // useEffect(() => {
-  //   const getTotalData = async () => {
-  //     setloadingforExplore(true);
-  //     const ts = await totalSupply();
-  //     setnftDetails(ts);
-  //     dispatch(totalsupply(ts));
-  //     setloadingforExplore(false);
-  //   };
-  //   setchange(false)
-  //   getTotalData();
-  // }, [change]);
 
   useEffect(() => {
     const collectionData = async () => {
@@ -42,16 +27,14 @@ function App() {
     };
     setchange(false);
     collectionData();
-  }, [change]);
+  }, [change, address]);
 
- 
   const handleConnect = async () => {
     try {
       const providers = await ProviderContract();
       providers
         .listAccounts()
         .then((accounts) => {
-          // console.log("MetaMask accounts:", accounts);
           setallAccounts(accounts);
 
           const cleanAddress = (address) =>

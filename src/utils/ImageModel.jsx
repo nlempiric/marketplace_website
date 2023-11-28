@@ -2,7 +2,6 @@ import React, { useRef } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 
 const ImageModel = ({ item, showImage, setshowImage }) => {
-  console.log("gdngfjskhfbsdjjjjjjk")
   const modalRef = useRef(null);
 
   const handleClose = () => {
@@ -15,7 +14,6 @@ const ImageModel = ({ item, showImage, setshowImage }) => {
     }
   };
 
-  console.log("items of image url",item)
   return (
     <>
       {showImage && (
